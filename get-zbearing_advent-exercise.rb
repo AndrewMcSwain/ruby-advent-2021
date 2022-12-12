@@ -1,15 +1,15 @@
 # _argv: link, datatype
 # curl
 content = File.read("input.txt")
-content_structured = { sanitized_string_to_array: content.split("\n") }
+content_structured = { 
+  sanitized_string_to_array: content
+    .split("\n")
+    .map {|a| a.to_i}
+  }
 
-# this works:
-content_structured[:sanitized_string_to_array]
-# this doesn't work 
 @input = content_structured[:sanitized_string_to_array]
-# 
 
-@depths = [299,200,208,210,200,207,240,269,260,263]
+# @depths = [299,200,208,210,200,207,240,269,260,263]
 
 def get_zbearing(array)
   array.each_with_index do |element, index|
@@ -23,7 +23,5 @@ def get_zbearing(array)
   end
 end
       
-get_zbearing(@depths)
-# get_zbearing(content_structured[:sanitized_string_to_array]) 
-# get get_zbearing(input)
+puts get_zbearing(@input)
 
